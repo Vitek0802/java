@@ -1,0 +1,53 @@
+public class Cat {
+    private boolean appetite;
+    private int howMuchToEat;
+    private String name;
+
+    public Cat(int howMuchToEat, String name,boolean appetite ) {
+        this.howMuchToEat = howMuchToEat;
+        this.appetite = appetite;
+        this.name = name;
+    }
+
+    public void appetited(int howMuchToEat, boolean appetite, Plate plate){
+        this.howMuchToEat = howMuchToEat;
+
+        if (appetite == true) {
+            plate.decreaseFood(howMuchToEat);
+        } else {
+            System.out.println("Я не ем");
+        }
+    }
+
+//    public void eat(Plate p){
+//        p.decreaseFood(howMuchToEat);
+//    }
+}
+
+class Plate {
+    private int food;
+
+    public Plate(int food) {
+        this.food = food;
+    }
+
+    public void decreaseFood(int f) {
+        food -= f;
+    }
+
+
+
+    public void info() {
+        System.out.println("Plate " + food);
+    }
+}
+
+class MainCatAndPlate {
+    public static void main(String[] args) {
+        Cat cat = new Cat(10, "Barsik", true);
+        Plate plate = new Plate(100);
+        plate.info();
+        cat.appetited(plate);
+        plate.info();
+    }
+}
